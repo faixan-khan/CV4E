@@ -22,13 +22,13 @@ leaderboard:
         "labels": ["Family", "Genus", "Specie", "Average"],
         "default_order_by": "Average",
         "metadata": {
-          "Metric1": {
+          "Average": {
             "sort_ascending": True,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "description": "A higher score is better.",
           },
-          "Metric2": {
+          "Specie": {
             "sort_ascending": True,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "description": "A higher score is better.",
           }
         }
       }
@@ -40,8 +40,8 @@ challenge_phases:
     leaderboard_public: False
     is_public: True
     is_submission_public: True
-    start_date: 2019-01-19 00:00:00
-    end_date: 2099-04-25 23:59:59
+    start_date: 2024-04-10 00:00:00
+    end_date: 2024-08-10 23:59:59
     test_annotation_file: annotations/test_annotations_devsplit.json
     codename: dev
     max_submissions_per_day: 5
@@ -57,22 +57,22 @@ challenge_phases:
       - name: publication_url
         is_visible: True
     submission_meta_attributes:
-      - name: TextAttribute
-        description: Sample
-        type: text
-        required: False
-      - name: SingleOptionAttribute
-        description: Sample
-        type: radio
-        options: ["A", "B", "C"]
-      - name: MultipleChoiceAttribute
-        description: Sample
-        type: checkbox
-        options: ["alpha", "beta", "gamma"]
-      - name: TrueFalseField
-        description: Sample
-        type: boolean
-        required: True
+      # - name: TextAttribute
+        # description: Sample
+        # type: text
+        # required: False
+      # - name: SingleOptionAttribute
+      #   description: Sample
+      #   type: radio
+      #   options: ["A", "B", "C"]
+      # - name: MultipleChoiceAttribute
+      #   description: Sample
+      #   type: checkbox
+      #   options: ["alpha", "beta", "gamma"]
+      # - name: TrueFalseField
+      #   description: Sample
+      #   type: boolean
+      #   required: True
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
     allowed_submission_file_types: ".json, .zip, .txt, .tsv, .gz, .csv, .h5, .npy, .npz"
@@ -82,8 +82,8 @@ challenge_phases:
     leaderboard_public: True
     is_public: True
     is_submission_public: True
-    start_date: 2019-01-01 00:00:00
-    end_date: 2099-05-24 23:59:59
+    start_date: 2024-04-10 00:00:00
+    end_date: 2024-09-22 23:59:59
     test_annotation_file: annotations/test_annotations_testsplit.json
     codename: test
     max_submissions_per_day: 5
@@ -99,20 +99,20 @@ challenge_phases:
       - name: publication_url
         is_visible: True
     submission_meta_attributes:
-      - name: TextAttribute
-        description: Sample
-        type: text
-      - name: SingleOptionAttribute
-        description: Sample
-        type: radio
-        options: ["A", "B", "C"]
-      - name: MultipleChoiceAttribute
-        description: Sample
-        type: checkbox
-        options: ["alpha", "beta", "gamma"]
-      - name: TrueFalseField
-        description: Sample
-        type: boolean
+      # - name: TextAttribute
+      #   description: Sample
+      #   type: text
+      # - name: SingleOptionAttribute
+      #   description: Sample
+      #   type: radio
+      #   options: ["A", "B", "C"]
+      # - name: MultipleChoiceAttribute
+      #   description: Sample
+      #   type: checkbox
+      #   options: ["alpha", "beta", "gamma"]
+      # - name: TrueFalseField
+      #   description: Sample
+      #   type: boolean
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
 
