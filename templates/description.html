@@ -1,5 +1,96 @@
 <p>Welcome to the 2024 E4CV Marine Specie Prediction Competition!</p>
 
-<p>The training set consists of <a href="https://fishnet-2023.github.io/">FishNet Dataset</a>. Teams will use this dataset to build computational models to predict specie for test set images. Whether you are working alone or as a team, we welcome researchers, and anyone interested in computational models for specie recognition to participate and submit their results.
+<p>The training set consists of <a href="https://fishnet-2023.github.io/">FishNet Dataset</a>. Teams will use this dataset to build computational models to predict specie for test set images. Whether you are working alone or as a team, we welcome researchers, and anyone interested in computational models for specie recognition to participate and submit their results.</p>
 
-</p>
+
+<!-- <h3> Winners</h3>
+<p> We thank all the participants who took part in the challenge.</p>
+<ul>
+    <li>The first position was secured by team <b>NAME</b> lead by <NAME>.</li>
+    <li>The second position was secured by team <b>NAME</b> lead by <NAME>.</li>
+</ul> -->
+
+<h3>Important Dates</h3>
+<ul>
+    <li>The Challenge launches: May 1, 2024</li>
+    <li>Dev Phase begins: May 10, 2024, 12:00 AM (AST)</li>
+    <li>Challenge Phase begins (hidden test set released): August 10, 2024, 12:00 AM (AST)</li>
+    <li>Challenge Phase ends: September 22, 2024, 12:00 PM (AST)</li>
+    <li>Challenge result notification: September 25, 2024</li>
+    <li>Workshop date: TBA</li>
+</ul>
+<p><b>Note: All times are in Arabian Time Zone (AST) time, which is 3 hours ahead of Coordinated Universal Time (UTC).</b></p>
+
+
+<h3>Prizes and Judging Criteria</h3>
+
+<ul>
+    <li>Specie Prediction Winner: The Winner will be determined by the highest average score across the entire hidden test set.</li>
+    <li>The winning team will be invited for a short oral presentation in the workshop.</li>    
+    <!-- <li>The winning team will receive a cash prize of 300 USD, and the second position will receive 200 USD. </li> -->
+    <li> Members of the organizing team can not be the winners.</li>
+</ul>
+
+<h3>Competition Site Participation</h3>
+
+<p>This year, the challenge will be hosted at the CV4E: Workshop On Computer Vision for Ecology at ECCV,2024.</p>
+<p>To participate in this competition, please follow these steps in sequence:</p>
+
+<ul>
+<li><b>Sign up. </b>Each person (team lead and team members) signs up for an EvalAI account</li>
+<li><b>Create team and name.</b> Team lead starts a team and names it by going to Participate - Create a New Team - Participate</li>
+<li><b>Invite teammates (optional).</b> Team lead invites team members by navigating to the sidebar Participant Teams - clicks on the add person button - add members by emails
+    <ul>
+        <li>Adding team members is optional in the sense that you may work alone. This is the process you must follow to add team members</li>
+        <li>Invited team members must already be registered and for team leads to invite they must enter the same email address team members signed up for EvalAI with. After doing so team members will display immediately if successful</li>
+        <li>Each person can only be on one team and each team can only have one team lead.</li>
+    </ul>
+</ul>
+
+
+<h3>Submission Format</h3>
+<p>To submit to a phase, teams must upload a JSON file containing their model's answer prediction in the following format:</p>
+
+<pre>
+    <code>
+      [
+        {
+          "image_id": int,
+          "specie": "PREDICTED SPECIE"
+          "genus": "PREDICTED GENUS"
+          "famil": "PREDICTED FAMILY"
+        },
+        {
+            "image_id": int,
+            "specie": "PREDICTED SPECIE"
+            "genus": "PREDICTED GENUS"
+            "famil": "PREDICTED FAMILY"
+        },
+        ...
+        {
+            "image_id": int,
+            "specie": "PREDICTED SPECIE"
+            "genus": "PREDICTED GENUS"
+            "famil": "PREDICTED FAMILY"
+        },  
+      ]
+    </code>
+  </pre>
+  
+<p><b>image_id: </b>an image's unique id</p>
+<p><b>specie: </b>the predicted specie present in the image. </p>
+<p><b>genus: </b>the predicted genus of the specie present in the image. </p>
+<p><b>family: </b>the predicted family of the specie present in the image. </p>
+<!-- <p>Here is an example submission file.</p>      -->
+<b>The submission file must include every image_id corresponding to the test set, and the format must also be correct. We will reject those unqualified files.</b>
+<!-- <b>You can use the <a href="#"> given </a> notebook to help you with your submission. </b> -->
+
+<h3>Data</h3>
+
+<p>The predictions are text responses to visual data.</p>
+<p> All the dataset related details can be found on the <a href="https://fishnet-2023.github.io/">FishNet</a> website.</p>
+<p>The dev phase test set can be found <a href="#"> here</a></p>
+<p>The test phase test set can be found <a href="#"> here</a></p>
+
+<b>Participants should not use any external data for training purposes other than the data provided by us.
+    Teams found doing so will be disqualified from the challenge. However, you are free to utilize large pre-trained systems. </b>
