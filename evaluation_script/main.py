@@ -66,13 +66,12 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
     m_g = confusion_matrix(gt_genus, genus_list)
     m_f = confusion_matrix(gt_family, family_list)
 
-    print(m_s)
-    print(m_g)
-    print(m_f)
-
     spe_acc = np.mean(m_s.diagonal()/ m_s.sum(axis=1))
     gen_acc = np.mean(m_g.diagonal()/ m_g.sum(axis=1))
     fam_acc = np.mean(m_f.diagonal()/ m_f.sum(axis=1))
+
+    print(spe_acc, gen_acc, fam_acc)
+
     avg_acc = (spe_acc+gen_acc+fam_acc)/3
 
     output = {}
