@@ -65,6 +65,10 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
     m_g = confusion_matrix(genus_list, gt_genus, labels = gt_genus)
     m_f = confusion_matrix(family_list, gt_family, labels = gt_family)
 
+    print(m_s)
+    print(m_g)
+    print(m_f)
+
     spe_acc = m_s.diagonal()/ m_s.sum(axis=1)
     gen_acc = m_g.diagonal()/ m_g.sum(axis=1)
     fam_acc = m_f.diagonal()/ m_f.sum(axis=1)
