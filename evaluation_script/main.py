@@ -1,5 +1,6 @@
 import random
 import json
+import numpy as np
 from sklearn.metrics import confusion_matrix
 import pandas as pd
 
@@ -69,9 +70,9 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
     print(m_g)
     print(m_f)
 
-    spe_acc = m_s.diagonal()/ m_s.sum(axis=1)
-    gen_acc = m_g.diagonal()/ m_g.sum(axis=1)
-    fam_acc = m_f.diagonal()/ m_f.sum(axis=1)
+    spe_acc = np.mean(m_s.diagonal()/ m_s.sum(axis=1))
+    gen_acc = np.mean(m_g.diagonal()/ m_g.sum(axis=1))
+    fam_acc = np.mean(m_f.diagonal()/ m_f.sum(axis=1))
     avg_acc = (spe_acc+gen_acc+fam_acc)/3
 
     output = {}
