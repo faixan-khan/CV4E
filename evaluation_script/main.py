@@ -61,9 +61,9 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
     gt_genus = ground_truth_data['genus'].tolist()
     gt_family = ground_truth_data['family'].tolist()
 
-    m_s = confusion_matrix(specie_list, gt_specie, labels = gt_specie)
-    m_g = confusion_matrix(genus_list, gt_genus, labels = gt_genus)
-    m_f = confusion_matrix(family_list, gt_family, labels = gt_family)
+    m_s = confusion_matrix(gt_specie, specie_list, labels = gt_specie)
+    m_g = confusion_matrix(gt_genus, genus_list, labels = gt_genus)
+    m_f = confusion_matrix(gt_family, family_list, labels = gt_family)
 
     print(m_s)
     print(m_g)
