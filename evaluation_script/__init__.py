@@ -36,7 +36,7 @@ def install_local_package(folder_name):
 # install("requests==2.25.1")
 install("scikit-learn")
 
-install_local_package("package_folder_name")
+# install_local_package("package_folder_name")
 
 
 from .main import evaluate
