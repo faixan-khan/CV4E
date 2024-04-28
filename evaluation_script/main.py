@@ -1,4 +1,7 @@
 import random
+import json
+from sklearn.metrics import confusion_matrix
+import pandas as pd
 
 
 def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwargs):
@@ -39,16 +42,44 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
             'submitted_at': u'2017-03-20T19:22:03.880652Z'
         }
     """
+    with open(user_submission_file, "r") as test_file_object:
+        test_data = json.load(test_file_object)
+    
+    ground_truth_data = pd.read_csv(test_annotation_file)
+    
+    sorted_json_data = sorted(test_data, key=lambda x: x['image_id'])
+
+    specie_list = []
+    genus_list = []
+    family_list = []
+    for item in sorted_json_data:
+        specie_list.append(item['specie'])
+        genus_list.append(item['genus'])
+        family_list.append(item['family'])
+    
+    gt_specie = ground_truth_data['specie'].tolist()
+    gt_genus = ground_truth_data['genus'].tolist()
+    gt_family = ground_truth_data['family'].tolist()
+
+    m_s = confusion_matrix(specie_list, gt_specie, labels = gt_specie)
+    m_g = confusion_matrix(genus_list, gt_genus, labels = gt_genus)
+    m_f = confusion_matrix(family_list, gt_family, labels = gt_family)
+
+    spe_acc = m_s.diagonal()/ m_s.sum(axis=1)
+    gen_acc = m_g.diagonal()/ m_g.sum(axis=1)
+    fam_acc = m_f.diagonal()/ m_f.sum(axis=1)
+    avg_acc = (spe_acc+gen_acc+fam_acc)/3
+
     output = {}
     if phase_codename == "dev":
         print("Evaluating for Dev Phase")
         output["result"] = [
             {
                 "train_split": {
-                    "Metric1": random.randint(0, 99),
-                    "Metric2": random.randint(0, 99),
-                    "Metric3": random.randint(0, 99),
-                    "Total": random.randint(0, 99),
+                    "Family": fam_acc,
+                    "Genus": gen_acc,
+                    "Specie": spe_acc,
+                    "Average": avg_acc,
                 }
             }
         ]
@@ -60,18 +91,18 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
         output["result"] = [
             {
                 "train_split": {
-                    "Metric1": random.randint(0, 99),
-                    "Metric2": random.randint(0, 99),
-                    "Metric3": random.randint(0, 99),
-                    "Total": random.randint(0, 99),
+                    "Family": fam_acc,
+                    "Genus": gen_acc,
+                    "Specie": spe_acc,
+                    "Average": avg_acc,
                 }
             },
             {
                 "test_split": {
-                    "Metric1": random.randint(0, 99),
-                    "Metric2": random.randint(0, 99),
-                    "Metric3": random.randint(0, 99),
-                    "Total": random.randint(0, 99),
+                    "Family": fam_acc,
+                    "Genus": gen_acc,
+                    "Specie": spe_acc,
+                    "Average": avg_acc,
                 }
             },
         ]
