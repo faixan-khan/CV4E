@@ -1,6 +1,6 @@
 # If you are not sure what all these fields mean, please refer our documentation here:
 # https://evalai.readthedocs.io/en/latest/configuration.html
-title: FishNet Classification Challenge
+title: CV4E@ECCV FishNet Classification Challenge
 short_description: Classify different fish species
 description: templates/description.html
 evaluation_details: templates/evaluation_details.html
