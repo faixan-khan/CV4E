@@ -47,20 +47,54 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
         test_data = json.load(test_file_object)
     
     ground_truth_data = pd.read_csv(test_annotation_file)
+
+    # sorted_json_data = sorted(test_data, key=lambda x: x['image_id'])
+
+    specie_dict = {}
+    genus_dict = {}
+    family_dict = {}
+    for item in test_data:
+        specie_dict[item['image_id']] = item['species']
+        genus_dict[item['image_id']] = item['Genus']
+        family_dict[item['image_id']] = item['family']
     
-    sorted_json_data = sorted(test_data, key=lambda x: x['image_id'])
+    image_id = ground_truth_data['image_id'].tolist()
+    gt_specie = ground_truth_data['species'].tolist()
+    gt_genus = ground_truth_data['Genus'].tolist()
+    gt_family = ground_truth_data['family'].tolist()
 
     specie_list = []
     genus_list = []
     family_list = []
-    for item in sorted_json_data:
-        specie_list.append(item['specie'])
-        genus_list.append(item['genus'])
-        family_list.append(item['family'])
+    for i in image_id:
+        if i in specie_dict:
+            specie_list.append(specie_dict[i])
+        else:
+            specie_list.append('No prediction')
+        if i in genus_dict:
+            genus_list.append(genus_dict[i])
+        else:
+            genus_list.append('No prediction')
+        if i in family_dict:
+            family_list.append(family_dict[i])
+        else:
+            family_list.append('No prediction')
+
+#   BEFORE COMMITING TRY THIS ON THE LOCAL MAHICNE TO SEE IT WORKS WITH JSON
     
-    gt_specie = ground_truth_data['specie'].tolist()
-    gt_genus = ground_truth_data['genus'].tolist()
-    gt_family = ground_truth_data['family'].tolist()
+    # sorted_json_data = sorted(test_data, key=lambda x: x['image_id'])
+    # 
+    # specie_list = []
+    # genus_list = []
+    # family_list = []
+    # for item in sorted_json_data:
+    #     specie_list.append(item['species'])
+    #     genus_list.append(item['Genus'])
+    #     family_list.append(item['family'])
+    # 
+    # gt_specie = ground_truth_data['species'].tolist()
+    # gt_genus = ground_truth_data['Genus'].tolist()
+    # gt_family = ground_truth_data['family'].tolist()
 
     m_s = confusion_matrix(gt_specie, specie_list)
     m_g = confusion_matrix(gt_genus, genus_list)
